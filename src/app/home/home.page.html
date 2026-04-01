@@ -1,20 +1,33 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>GeoReport</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding main-bg">
+  <div class="welcome-container animate__animated animate__fadeIn">
+    <div class="hero-section">
+      <div class="logo-container">
+        <ion-icon name="map-outline" class="hero-icon"></ion-icon>
+      </div>
+      <h1>GeoReport</h1>
+      <p class="tagline">Reporta incidencias urbanas en segundos</p>
+    </div>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <div class="glass-card welcome-card">
+      <p>GeoReport te permite documentar incidencias en tiempo real. Captura una fotografía y obtendremos tu ubicación exacta para un reporte preciso.</p>
+    </div>
+
+    <div class="action-grid">
+      <ion-button expand="block" color="primary" routerLink="/nueva-incidencia" class="home-action-btn">
+        <ion-icon name="camera" slot="start"></ion-icon>
+        NUEVA INCIDENCIA
+      </ion-button>
+
+      <ion-button expand="block" fill="outline" color="secondary" routerLink="/listado" class="home-action-btn">
+        <ion-icon name="list" slot="start"></ion-icon>
+        MIS REPORTES
+      </ion-button>
+    </div>
   </div>
 </ion-content>

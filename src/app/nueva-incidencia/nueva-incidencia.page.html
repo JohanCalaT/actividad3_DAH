@@ -1,0 +1,85 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Nueva Incidencia</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  
+  <!-- ESTADO SIN FOTO: Placeholder Mejorado -->
+  <div *ngIf="!foto" class="placeholder-container animate__animated animate__fadeIn">
+    <div class="glass-card placeholder-content">
+      <div class="icon-circle">
+        <ion-icon name="camera-outline"></ion-icon>
+      </div>
+      <h2>Captura de Evidencia</h2>
+      <p>Para reportar una incidencia, necesitamos una fotografía clara y tu ubicación actual.</p>
+      <ion-button (click)="capturarIncidencia()" expand="block" shape="round" class="main-action-button">
+        <ion-icon name="camera" slot="start"></ion-icon>
+        Tomar Foto
+      </ion-button>
+    </div>
+  </div>
+
+  <!-- ESTADO CON FOTO: Visualización Premium -->
+  <div *ngIf="foto" class="captured-content">
+    <div class="image-wrapper shadow-lg">
+      <img [src]="foto" class="captured-photo" alt="Evidencia">
+      <div class="image-overlay">
+        <ion-badge color="success">Captura Exitosa</ion-badge>
+      </div>
+    </div>
+    
+    <div class="glass-card report-form animate__animated animate__fadeInUp">
+      <div class="card-header">
+        <ion-icon name="create-outline" color="primary"></ion-icon>
+        <span>Detalles del Reporte</span>
+      </div>
+      
+      <ion-item fill="outline" mode="md" class="custom-input">
+        <ion-label position="floating">Título de la incidencia</ion-label>
+        <ion-input [(ngModel)]="titulo" placeholder="Ej. Farola rota, Bache, etc." type="text" [clearInput]="true"></ion-input>
+      </ion-item>
+
+      <ion-item fill="outline" mode="md" class="custom-input ion-margin-top">
+        <ion-label position="floating">Descripción detallada</ion-label>
+        <ion-textarea [(ngModel)]="descripcion" placeholder="Describe lo que sucede..." [autoGrow]="true" rows="3"></ion-textarea>
+      </ion-item>
+    </div>
+
+    <div class="glass-card geo-details animate__animated animate__fadeInUp">
+      <div class="card-header">
+        <ion-icon name="location" color="primary"></ion-icon>
+        <span>Ubicación Precisa</span>
+      </div>
+      
+      <div class="geo-grid">
+        <div class="geo-item">
+          <small>LATITUD</small>
+          <strong>{{ latitud }}</strong>
+        </div>
+        <div class="geo-divider"></div>
+        <div class="geo-item">
+          <small>LONGITUD</small>
+          <strong>{{ longitud }}</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-footer ion-padding-top">
+      <ion-button expand="block" color="success" (click)="guardar()" [disabled]="guardando" class="save-button-premium">
+        <ion-icon name="cloud-upload-outline" slot="start"></ion-icon>
+        GUARDAR REPORTE
+      </ion-button>
+      
+      <ion-button expand="block" fill="clear" color="medium" (click)="capturarIncidencia()">
+        <ion-icon name="refresh-outline" slot="start"></ion-icon>
+        Repetir Captura
+      </ion-button>
+    </div>
+  </div>
+
+</ion-content>

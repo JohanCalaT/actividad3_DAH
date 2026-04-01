@@ -1,40 +1,37 @@
-# Specifies intentionally untracked files to ignore when using Git
-# http://git-scm.com/docs/gitignore
-
-*~
-*.sw[mnpcod]
-.tmp
-*.tmp
-*.tmp.*
-UserInterfaceState.xcuserstate
-$RECYCLE.BIN/
-
-*.log
-log.txt
-
-
-/.sourcemaps
+# Ignore de dependencias y builds
+node_modules/
+dist/
+www/
+www-test/
+platforms/
+plugins/
+*.sourcemaps
 /.versions
 /coverage
-
-# Ionic
 /.ionic
-/www
-/platforms
-/plugins
+/tmp/
+/out-tsc/
+/bazel-out/
 
-# Compiled output
-/dist
-/tmp
-/out-tsc
-/bazel-out
+# Logs (Importante para evitar archivos de texto temporales)
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+log.txt
+debug.log
 
-# Node
-/node_modules
-npm-debug.log
-yarn-error.log
+# Caché de Angular y Sass
+.angular/
+.sass-cache/
 
-# IDEs and editors
+# IDEs y Editores
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 .idea/
 .project
 .classpath
@@ -43,28 +40,17 @@ yarn-error.log
 .settings/
 *.sublime-project
 *.sublime-workspace
+.history/
 
-# Visual Studio Code
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-.history/*
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
 
-
-# Miscellaneous
-/.angular
-/.angular/cache
-.sass-cache/
+# Otros
 /.nx
 /.nx/cache
 /connect.lock
-/coverage
 /libpeerconnection.log
-testem.log
-/typings
-
-# System files
-.DS_Store
-Thumbs.db
+/typings/

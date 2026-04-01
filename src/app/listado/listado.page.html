@@ -1,0 +1,63 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Mis Reportes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding gray-bg">
+  
+  <div *ngIf="incidencias().length === 0" class="empty-state animate__animated animate__fadeIn">
+    <ion-icon name="warning-outline"></ion-icon>
+    <h3>No hay reportes</h3>
+    <p>Las incidencias que captures aparecerán aquí.</p>
+    <ion-button routerLink="/nueva-incidencia" fill="outline" shape="round">
+      Crear Primera
+    </ion-button>
+  </div>
+
+  <ion-list lines="none" class="transparent-list">
+    <ion-list-header *ngIf="incidencias().length > 0">
+      <ion-label>Historial de Incidencias</ion-label>
+    </ion-list-header>
+
+    @for (incidencia of incidencias(); track incidencia.id) {
+      <ion-item-sliding>
+        <ion-item (click)="mostrarEnConstruccion()" class="incident-item" button detail="false">
+          <ion-thumbnail slot="start" class="incident-thumb">
+            <img [src]="incidencia.foto" />
+          </ion-thumbnail>
+          
+          <ion-label>
+            <div class="item-header">
+              <h2>{{ incidencia.titulo }}</h2>
+              <ion-badge color="primary" mode="ios">Enviado</ion-badge>
+            </div>
+            
+            <p class="description-truncate">{{ incidencia.descripcion }}</p>
+            
+            <div class="item-meta ion-margin-top">
+              <ion-icon name="location-outline"></ion-icon>
+              <p>{{ incidencia.latitud.toFixed(4) }}, {{ incidencia.longitud.toFixed(4) }}</p>
+            </div>
+            
+            <div class="item-meta">
+              <ion-icon name="calendar-outline"></ion-icon>
+              <p>{{ incidencia.fecha | date:'short' }}</p>
+            </div>
+          </ion-label>
+          
+          <ion-icon name="chevron-forward" slot="end" color="medium" class="arrow-icon"></ion-icon>
+        </ion-item>
+
+        <ion-item-options side="end">
+          <ion-item-option color="danger" expandable>
+            <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    }
+  </ion-list>
+</ion-content>
