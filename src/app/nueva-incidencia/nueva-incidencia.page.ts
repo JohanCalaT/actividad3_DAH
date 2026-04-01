@@ -21,7 +21,7 @@ import {
   styleUrls: ['./nueva-incidencia.page.scss'],
   standalone: true,
   imports: [
-    CommonModule, FormsModule, IonHeader, IonToolbar, IonButtons, IonBackButton, 
+    FormsModule, IonHeader, IonToolbar, IonButtons, IonBackButton, 
     IonTitle, IonContent, IonIcon, IonItem, IonLabel, IonButton, 
     IonInput, IonTextarea, IonBadge
   ]

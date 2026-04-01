@@ -9,8 +9,9 @@
 
 <ion-content [fullscreen]="true" class="ion-padding">
   
+@if (!foto) {
   <!-- ESTADO SIN FOTO: Placeholder Mejorado -->
-  <div *ngIf="!foto" class="placeholder-container animate__animated animate__fadeIn">
+  <div class="placeholder-container animate__animated animate__fadeIn">
     <div class="glass-card placeholder-content">
       <div class="icon-circle">
         <ion-icon name="camera-outline"></ion-icon>
@@ -23,9 +24,9 @@
       </ion-button>
     </div>
   </div>
-
+} @else {
   <!-- ESTADO CON FOTO: Visualización Premium -->
-  <div *ngIf="foto" class="captured-content">
+  <div class="captured-content">
     <div class="image-wrapper shadow-lg">
       <img [src]="foto" class="captured-photo" alt="Evidencia">
       <div class="image-overlay">
@@ -81,5 +82,6 @@
       </ion-button>
     </div>
   </div>
+}
 
 </ion-content>

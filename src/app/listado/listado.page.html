@@ -9,14 +9,16 @@
 
 <ion-content [fullscreen]="true" class="ion-padding gray-bg">
   
-  <div *ngIf="incidencias().length === 0" class="empty-state animate__animated animate__fadeIn">
-    <ion-icon name="warning-outline"></ion-icon>
-    <h3>No hay reportes</h3>
-    <p>Las incidencias que captures aparecerán aquí.</p>
-    <ion-button routerLink="/nueva-incidencia" fill="outline" shape="round">
-      Crear Primera
-    </ion-button>
-  </div>
+  @if (incidencias().length === 0) {
+    <div class="empty-state animate__animated animate__fadeIn">
+      <ion-icon name="warning-outline"></ion-icon>
+      <h3>No hay reportes</h3>
+      <p>Las incidencias que captures aparecerán aquí.</p>
+      <ion-button routerLink="/nueva-incidencia" fill="outline" shape="round">
+        Crear Primera
+      </ion-button>
+    </div>
+  }
 
   <ion-list lines="none" class="transparent-list">
     <ion-list-header *ngIf="incidencias().length > 0">
