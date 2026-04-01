@@ -21,9 +21,11 @@
   }
 
   <ion-list lines="none" class="transparent-list">
-    <ion-list-header *ngIf="incidencias().length > 0">
-      <ion-label>Historial de Incidencias</ion-label>
-    </ion-list-header>
+    @if (incidencias().length > 0) {
+      <ion-list-header>
+        <ion-label>Historial de Incidencias</ion-label>
+      </ion-list-header>
+    }
 
     @for (incidencia of incidencias(); track incidencia.id) {
       <ion-item-sliding>
